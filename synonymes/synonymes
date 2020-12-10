@@ -1,0 +1,11 @@
+import requests
+from bs4 import BeautifulSoup
+
+def __init__(self):
+  pass
+
+def synonymes(self, word):
+  r = requests.post("http://www.synonymes.com/synonyme.php", data={'mot': word})
+  html = r.text
+  soup = BeautifulSoup(html, 'lxml')
+  return soup.find_all('li')[0].text.split(', ')
